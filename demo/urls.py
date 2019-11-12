@@ -15,13 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from demo_app.views import test, index
+from demo_app.views import index, BookView
 urlpatterns = [
     path('admin/', admin.site.urls),
 
     path('', index, name='index'),
-    # path('test/<a>/<b>/', test),
-    path('newtest/<a>/<b>/', test, name='test')  # name的作用是将test函数能与html文件对应起来，当地址变化时仍然能准确调用函数
-
+    path('books/', BookView.search_title, name='search_title')
 
 ]
