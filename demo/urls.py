@@ -20,6 +20,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     path('', index, name='index'),
-    path('books/', BookView.search_title, name='search_title')
+    path('books/', BookView.as_view(), name='get')  # 使用.as_view()才能正确连接到put函数
 
 ]

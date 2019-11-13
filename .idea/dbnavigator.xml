@@ -16,7 +16,7 @@
       <scope value="GLOBAL" />
       <destination value="FILE" />
       <format value="EXCEL" />
-      <charset value="UTF-8" />
+      <charset value="windows-1252" />
     </export-instructions>
   </component>
   <component name="DBNavigator.Project.DatabaseBrowserManager">
@@ -24,35 +24,25 @@
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
     <loaded-nodes>
-      <connection connection-id="584e1ae0-fdad-43f6-b98e-6efe58a583d1">
-        <schema name="main" object-types="view, constraint, column, dataset trigger, table, index" />
-      </connection>
       <connection connection-id="9e9ed52c-bdcf-48e2-a19f-2788284d6bbf">
-        <schema name="main" object-types="view, constraint, column, dataset trigger, table, index" />
+        <schema name="main" object-types="constraint, table, index, view, column, dataset trigger" />
       </connection>
     </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
-    <connection id="584e1ae0-fdad-43f6-b98e-6efe58a583d1">
-      <console name="Connection" type="STANDARD" schema="main" session="Main"><![CDATA[delete from mainstorage where title='人评价)']]></console>
-    </connection>
     <connection id="9e9ed52c-bdcf-48e2-a19f-2788284d6bbf">
-      <console name="Connection" type="STANDARD" schema="main" session="Main"><![CDATA[delete from demo_app_book]]></console>
+      <console name="Connection" type="STANDARD" schema="main" session="Main"><![CDATA[select * from demo_app_book where author = '陈忠实' 
+delete from demo_app_book where id = 898
+update demo_app_book set booktype = '小说' where id = 868]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
-    <connection id="584e1ae0-fdad-43f6-b98e-6efe58a583d1" />
     <connection id="9e9ed52c-bdcf-48e2-a19f-2788284d6bbf" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
-    <filter-actions connection-id="584e1ae0-fdad-43f6-b98e-6efe58a583d1" dataset="main.mainstorage" active-filter-id="EMPTY_FILTER">
-      <filter id="80b389a3-d492-4f38-b740-f5a689a8ce69" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND">
-        <condition column="author" operator="=" value="" active="true" />
-      </filter>
-    </filter-actions>
     <filter-actions connection-id="9e9ed52c-bdcf-48e2-a19f-2788284d6bbf" dataset="main.demo_app_book" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="9e9ed52c-bdcf-48e2-a19f-2788284d6bbf" dataset="main.demo_app_person" active-filter-id="" />
   </component>
@@ -79,92 +69,6 @@
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="584e1ae0-fdad-43f6-b98e-6efe58a583d1" active="true">
-        <database>
-          <name value="eleclib" />
-          <description value="" />
-          <database-type value="SQLITE" />
-          <config-type value="BASIC" />
-          <database-version value="3.23" />
-          <driver-source value="BUILTIN" />
-          <driver-library value="" />
-          <driver value="" />
-          <url-type value="FILE" />
-          <host value="localhost" />
-          <port value="1234" />
-          <database value="database" />
-          <files>
-            <file path="C:\Users\Ronnie Yang\PycharmProjects\demo\demo_app\eleclib.db" schema="main" />
-          </files>
-          <type value="NONE" />
-          <user value="" />
-          <deprecated-pwd value="" />
-        </database>
-        <properties>
-          <auto-commit value="false" />
-        </properties>
-        <ssh-settings>
-          <active value="false" />
-          <proxy-host value="" />
-          <proxy-port value="22" />
-          <proxy-user value="" />
-          <deprecated-proxy-pwd value="" />
-          <auth-type value="PASSWORD" />
-          <key-file value="" />
-          <key-passphrase value="" />
-        </ssh-settings>
-        <ssl-settings>
-          <active value="false" />
-          <certificate-authority-file value="" />
-          <client-certificate-file value="" />
-          <client-key-file value="" />
-        </ssl-settings>
-        <details>
-          <charset value="UTF-8" />
-          <session-management value="true" />
-          <ddl-file-binding value="true" />
-          <database-logging value="false" />
-          <connect-automatically value="true" />
-          <restore-workspace value="true" />
-          <restore-workspace-deep value="true" />
-          <environment-type value="default" />
-          <idle-time-to-disconnect value="30" />
-          <idle-time-to-disconnect-pool value="5" />
-          <credential-expiry-time value="10" />
-          <max-connection-pool-size value="7" />
-          <alternative-statement-delimiter value="" />
-        </details>
-        <object-filters hide-empty-schemas="false" hide-pseudo-columns="false">
-          <object-type-filter use-master-settings="true">
-            <object-type name="SCHEMA" enabled="true" />
-            <object-type name="USER" enabled="true" />
-            <object-type name="ROLE" enabled="true" />
-            <object-type name="PRIVILEGE" enabled="true" />
-            <object-type name="CHARSET" enabled="true" />
-            <object-type name="TABLE" enabled="true" />
-            <object-type name="VIEW" enabled="true" />
-            <object-type name="MATERIALIZED_VIEW" enabled="true" />
-            <object-type name="NESTED_TABLE" enabled="true" />
-            <object-type name="COLUMN" enabled="true" />
-            <object-type name="INDEX" enabled="true" />
-            <object-type name="CONSTRAINT" enabled="true" />
-            <object-type name="DATASET_TRIGGER" enabled="true" />
-            <object-type name="DATABASE_TRIGGER" enabled="true" />
-            <object-type name="SYNONYM" enabled="true" />
-            <object-type name="SEQUENCE" enabled="true" />
-            <object-type name="PROCEDURE" enabled="true" />
-            <object-type name="FUNCTION" enabled="true" />
-            <object-type name="PACKAGE" enabled="true" />
-            <object-type name="TYPE" enabled="true" />
-            <object-type name="TYPE_ATTRIBUTE" enabled="true" />
-            <object-type name="ARGUMENT" enabled="true" />
-            <object-type name="DIMENSION" enabled="true" />
-            <object-type name="CLUSTER" enabled="true" />
-            <object-type name="DBLINK" enabled="true" />
-          </object-type-filter>
-          <object-name-filters />
-        </object-filters>
-      </connection>
       <connection id="9e9ed52c-bdcf-48e2-a19f-2788284d6bbf" active="true">
         <database>
           <name value="Connection" />
