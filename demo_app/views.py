@@ -24,8 +24,15 @@ class BookView(APIView):
         target = BookSerialize(Book.objects.all(), many=True)  # many的设置意为序列化所有
         return Response(target.data)  # 返回对象为多个有序字典
 
-    def put(self, request, author):
+    def post(self, request):
         pass
+
+
+class BookViewTitle(APIView):
+    def get(self, request, title):
+        target = BookSerialize(Book.objects.filter(title=title), many=True)
+        print(title)
+        return Response(target.data)
 
 
 def index(request):
