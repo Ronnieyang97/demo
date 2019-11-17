@@ -17,6 +17,23 @@ class BookSerialize(serializers.Serializer):  # 对应.models中的Book类设置
     booktype = serializers.CharField(max_length=10)
     introduction = serializers.CharField(max_length=1024)
 
+    def create(self, validated_data):
+        self.title, self.author, self.booktype, self.introduction = validated_data['title'], \
+                                                                    validated_data['author'], \
+                                                                    validated_data['booktype'], \
+                                                                    validated_data['introduction']
+        self.save()
+        return self
+
+    def update(self, instance, validated_data):
+        # 提交更新数据时必须重写update方法（serializers.Serializer中的update方法为空并且只会返回一个报错）
+        instance.title, instance.author, instance.booktype, instance.introduction = validated_data['title'], \
+                                                                                    validated_data['author'], \
+                                                                                    validated_data['booktype'], \
+                                                                                    validated_data['introduction']
+        instance.save()
+        return instance
+
 
 class BookView(APIView):
     def get(self, request):
@@ -35,13 +52,30 @@ class BookViewTitle(APIView):
 
 class BookViewOne(APIView):
     def get(self, request, dbid):
-        print()
         target = BookSerialize(Book.objects.get(id=dbid))
         return Response(target.data)
 
-    def post(self, request):
+    def put(self, request, dbid):
+        target = BookSerialize(Book.objects.get(id=dbid), data=request.data)
+        if target.is_valid():
+            target.update(target, request.data)
+            target.save()
+            return Response(target.data)
+        else:
+            return HttpResponse(target.errors)
 
 
+class BookCreate(APIView):
+    def get(self):
+        return HttpResponse('input the detail')
+
+    def put(self, request):
+        target = BookSerialize(request.data, data=request.data)
+        if target.is_valid():
+            target.create(target.data)
+            target.save()
+        else:
+            return HttpResponse(target.errors)
 
 
 def index(request):
