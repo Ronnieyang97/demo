@@ -17,14 +17,6 @@ class BookSerialize(serializers.Serializer):  # 对应.models中的Book类设置
     booktype = serializers.CharField(max_length=10)
     introduction = serializers.CharField(max_length=1024)
 
-    def create(self, validated_data):
-        self.title, self.author, self.booktype, self.introduction = validated_data['title'], \
-                                                                    validated_data['author'], \
-                                                                    validated_data['booktype'], \
-                                                                    validated_data['introduction']
-        self.save()
-        return self
-
     def update(self, instance, validated_data):
         # 提交更新数据时必须重写update方法（serializers.Serializer中的update方法为空并且只会返回一个报错）
         instance.title, instance.author, instance.booktype, instance.introduction = validated_data['title'], \
@@ -66,16 +58,18 @@ class BookViewOne(APIView):
 
 
 class BookCreate(APIView):
-    def get(self):
-        return HttpResponse('input the detail')
+    def get(self, request):
+        return Response('input the detail')
 
     def put(self, request):
-        target = BookSerialize(request.data, data=request.data)
-        if target.is_valid():
-            target.create(target.data)
-            target.save()
-        else:
-            return HttpResponse(target.errors)
+        if request.data:
+            Book.objects.create(id=len(Book.objects.all()) + 1,
+                                title=request.data['title'],
+                                author=request.data['author'],
+                                booktype=request.data['booktype'],
+                                introduction=request.data['introduction'])
+            return Response(BookSerialize(Book.objects.get(id=len(Book.objects.all()))).data)
+
 
 
 def index(request):

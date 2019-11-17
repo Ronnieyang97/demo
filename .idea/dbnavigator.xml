@@ -25,15 +25,15 @@
     <show-object-properties value="true" />
     <loaded-nodes>
       <connection connection-id="9e9ed52c-bdcf-48e2-a19f-2788284d6bbf">
-        <schema name="main" object-types="table, column, view" />
+        <schema name="main" object-types="table, column, index, constraint, dataset trigger, view" />
       </connection>
     </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="9e9ed52c-bdcf-48e2-a19f-2788284d6bbf">
-      <console name="Connection" type="STANDARD" schema="main" session="Main"><![CDATA[select * from demo_app_book where title like '%去旅行%'
+      <console name="Connection" type="STANDARD" schema="main" session="Main"><![CDATA[select * from demo_app_book where id = 898
 delete from demo_app_book where id = 898
-update demo_app_book set booktype = '小说' where id = 868]]></console>
+update demo_app_book set booktype = '小说' where id = 897]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
