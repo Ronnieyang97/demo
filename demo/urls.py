@@ -14,13 +14,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from demo_app.views import index, BookView, BookViewTitle
+from django.urls import path, re_path
+from demo_app.views import index, BookView, BookViewTitle, BookViewOne
 import re
 urlpatterns = [
     path('admin/', admin.site.urls),
 
     path('', index, name='index'),
     path('books/', BookView.as_view(), name='get'),  # 使用.as_view()才能正确连接到put函数
-    path('books/<title>/', BookViewTitle.as_view(), name='get')
+    path('title/<title>/', BookViewTitle.as_view(), name='get'),
+    path('one/<title>/<author>', BookViewOne.as_view(), name='get'),
 ]
