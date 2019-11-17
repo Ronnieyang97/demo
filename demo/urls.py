@@ -15,14 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, re_path
-from demo_app.views import index, BookView, BookViewTitle, BookViewOne, BookCreate
+from demo_app.views import *
 import re
 urlpatterns = [
     path('admin/', admin.site.urls),
 
     path('', index, name='index'),
-    path('books/', BookView.as_view(), name='get'),  # 使用.as_view()才能正确连接到put函数
+    path('books/', BookView.as_view(), name='get'),  # 使用.as_view()才能正确连接到get函数
     path('title/<title>/', BookViewTitle.as_view(), name='get'),
+    path('author/<author>/', BookViewAuthor.as_view(), name='get'),
+    path('type/<booktype>/', BookViewType.as_view(), name='get'),
     path('one/<dbid>', BookViewOne.as_view(), name='get'),
-    path('create/', BookCreate.as_view(), name='put')
+    path('create/', BookCreate.as_view(), name='put'),
 ]
