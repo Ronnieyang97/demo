@@ -11,6 +11,7 @@ from rest_framework.response import Response
 
 
 class BookSerialize(serializers.Serializer):  # 对应.models中的Book类设置
+    id = serializers.CharField(max_length=10)
     title = serializers.CharField(max_length=30)
     author = serializers.CharField(max_length=20)
     booktype = serializers.CharField(max_length=10)
@@ -33,13 +34,13 @@ class BookViewTitle(APIView):
 
 
 class BookViewOne(APIView):
-    def get(self, request, title, author=''):
+    def get(self, request, dbid):
         print()
-        target = BookSerialize(Book.objects.filter(title=title, author=author), many=True)
+        target = BookSerialize(Book.objects.get(id=dbid))
         return Response(target.data)
 
-    def poat(self, request):
-        pass
+    def post(self, request):
+
 
 
 

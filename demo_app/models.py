@@ -5,6 +5,7 @@ from django.db import models
 
 
 class Book(models.Model):
+    id = models.CharField(max_length=10, primary_key=True)
     title = models.CharField(max_length=30)
     author = models.CharField(max_length=20)
     booktype = models.CharField(max_length=10)
