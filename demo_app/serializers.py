@@ -3,7 +3,10 @@ from rest_framework import serializers
 
 class BookSerialize(serializers.Serializer):  # 对应.models中的Book类设置
     id = serializers.CharField(max_length=10)
-    title = serializers.CharField(max_length=30)
+    title = serializers.HyperlinkedIdentityField(view_name='get_id',
+                                                 lookup_url_kwarg='id',
+                                                 lookup_field=id,
+                                                 )
     author = serializers.CharField(max_length=20)
     booktype = serializers.CharField(max_length=10)
     introduction = serializers.CharField(max_length=1024)
