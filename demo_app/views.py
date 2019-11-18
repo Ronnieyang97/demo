@@ -17,25 +17,22 @@ class BookView(APIView):
 class BookViewTitle(APIView):
     def get(self, request, title):
         # cantains相当于sql中的like
-        return Response(BookSerialize(Book.objects.filter(title__contains=title), many=True,
-                                      content={'request': request}).data)
+        return Response(BookSerialize(Book.objects.filter(title__contains=title), many=True).data)
 
 
 class BookViewAuthor(APIView):
     def get(self, request, author):
-        return Response(BookSerialize(Book.objects.filter(author__contains=author), many=True,
-                                      content={'request': request}).data)
+        return Response(BookSerialize(Book.objects.filter(author__contains=author), many=True).data)
 
 
 class BookViewType(APIView):
     def get(self, request, booktype):
-        return Response(BookSerialize(Book.objects.filter(booktype__contains=booktype), many=True,
-                                      content={'request': request}).data)
+        return Response(BookSerialize(Book.objects.filter(booktype__contains=booktype), many=True).data)
 
 
 class BookViewOne(APIView):
     def get(self, request, dbid):
-        return Response(BookSerialize(Book.objects.get(id=dbid), content={'request': request}).data)
+        return Response(BookSerialize(Book.objects.get(id=dbid)).data)
 
     def put(self, request, dbid):
         target = BookSerialize(Book.objects.get(id=dbid), data=request.data)
@@ -63,6 +60,3 @@ class BookCreate(APIView):
 
 def index(request):
     return render(request, 'home.html')
-
-
-
