@@ -50,10 +50,10 @@
         }
       },
       created(){
-        for(var i = 0;i < this.route.length;i++){
-          if(this.route[i].url == this.$route.path){
+        for(var i=0;i < this.routes.length;i++){
+          if(this.routes[i].url == this.$route.path){
             this.trigger = i;
-            return;
+            return 0;
           }
         }
       }
