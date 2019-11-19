@@ -1,9 +1,10 @@
 <template>
- <h4>boooook</h4>
+ <h4>搜索结果</h4>
 
 </template>
 
 <script>
+  import booklist from './booklist'
   export default{
       name:'bookshow',
       data(){

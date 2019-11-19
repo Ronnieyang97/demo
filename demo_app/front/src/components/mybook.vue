@@ -12,9 +12,10 @@
         </div>
       </div>
       <div class="col-md-7">
-          <div class="panel-body">
-            <bookedit></bookedit>
-          </div>
+
+        <div class="panel-body">
+          <bookedit></bookedit>
+        </div>
       </div>
     </div>
   </div>
