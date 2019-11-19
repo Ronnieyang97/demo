@@ -1,6 +1,5 @@
 <template>
   <div class="wrap">
-    <div class="edit">
       <textarea rows="10" cols="100" class="editor"></textarea>
     </div>
   </div>
@@ -16,6 +15,5 @@
 </script>
 
 <style>
-  .mark{width: 800px; height: 400px; margin: 0 auto;}
-  .edit,.show{float: right; width: 395px; height: 400px; border: 1px soild #666;}
+  .editor{width: 200; height: 200px; border: 1px soild #666;}
 </style>
